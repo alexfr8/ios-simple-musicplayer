@@ -1,0 +1,7 @@
+/*SearchViewController*/
+
+"SearchView.navBarTitle"="Music Player";
+"SearchView.lblTitle"="FIND YOUR FAVOURITE MUSIC";
+"SearchView.lblDescription"="Write your artist or song name";
+"SearchView.lblYourIdTitle"="Go to listen some music!";
+"SearchView.txtFindHolder"="Enter search term";

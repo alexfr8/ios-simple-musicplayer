@@ -1,0 +1,19 @@
+/* 
+  File.strings
+  MusicPlayer
+
+  Created by Alejandro Fernández Ruiz on 17/4/18.
+  Copyright © 2018 Personal. All rights reserved.
+*/
+
+/*App*/
+"CFBundleDisplayName"="MusicPlayer";
+"NSHumanReadableCopyright" = "2018 alex github account. All rights reserved.";
+
+/*SearchViewController*/
+
+"SearchView.navBarTitle"="Music Player";
+"SearchView.lblTitle"="ENCUENTRA TU MÚSICA FAVORITA";
+"SearchView.lblDescription"="Escribe el nombre de tu artista o tema favorito";
+"SearchView.lblYourIdTitle"="Escuchemos algo de música";
+"SearchView.txtFindHolder"="Introduce el termino de busqueda";
