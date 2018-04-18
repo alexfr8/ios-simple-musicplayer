@@ -23,6 +23,7 @@ class SearchPresenter {
     
     
     weak private var mySearchView: SearchView?
+    weak private var api: API?
     
     init() {
        
@@ -50,5 +51,16 @@ class SearchPresenter {
       
         mySearchView?.setupText(textProvided: mTexts as NSDictionary)
         
+    }
+    
+    func fetchMusic(term: String) {
+        
+        API.search(termParam:term) { (success, musicSearch, message) in
+            if (success) {
+                
+            } else {
+                
+            }
+        }
     }
 }

@@ -35,6 +35,7 @@ class SearchViewController: BaseViewController {
         searchPresenter.attachView(view:self)
         // Do any additional setup after loading the view.
         searchPresenter.setupUI()
+        searchPresenter.fetchMusic(term: "queen")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
