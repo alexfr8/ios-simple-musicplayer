@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,9 +59,68 @@
                                     <constraint firstAttribute="width" constant="40" id="un5-t3-Kkd"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="34d-i9-QHY" userLabel="tableSearch">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="34d-i9-QHY" userLabel="tableSearch">
                                 <rect key="frame" x="0.0" y="279" width="375" height="388"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="75" id="9OX-YJ-129" customClass="SearchViewCell" customModule="MusicPlayer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9OX-YJ-129" id="Kzh-Cz-llB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-6w-n35" userLabel="lblAuthor">
+                                                    <rect key="frame" x="83" y="0.0" width="284" height="21"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ax-7n-syB" userLabel="imgSong">
+                                                    <rect key="frame" x="15" y="0.0" width="60" height="64"/>
+                                                    <color key="backgroundColor" red="0.36290761830000001" green="0.48749330639999999" blue="0.1176304817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="0w0-fD-nql"/>
+                                                        <constraint firstAttribute="width" secondItem="7ax-7n-syB" secondAttribute="height" multiplier="15:16" id="IJs-NZ-jc1"/>
+                                                        <constraint firstAttribute="width" constant="60" id="veS-zt-tR9"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSS-bO-j3r" userLabel="lblTitle">
+                                                    <rect key="frame" x="83" y="43" width="284" height="21"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="NSS-bO-j3r" secondAttribute="bottom" constant="10.5" id="5XD-Bo-UJj"/>
+                                                <constraint firstAttribute="bottom" secondItem="7ax-7n-syB" secondAttribute="bottom" constant="10.5" id="LL1-UJ-cgd"/>
+                                                <constraint firstItem="NSS-bO-j3r" firstAttribute="top" secondItem="ZG2-6w-n35" secondAttribute="bottom" constant="22" id="PB5-CE-YUd"/>
+                                                <constraint firstItem="ZG2-6w-n35" firstAttribute="leading" secondItem="7ax-7n-syB" secondAttribute="trailing" constant="8" id="VaU-uv-kVq"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZG2-6w-n35" secondAttribute="trailing" constant="8" id="XsR-HT-Cd1"/>
+                                                <constraint firstItem="ZG2-6w-n35" firstAttribute="top" secondItem="Kzh-Cz-llB" secondAttribute="top" id="XzS-Dn-yW1"/>
+                                                <constraint firstAttribute="trailing" secondItem="NSS-bO-j3r" secondAttribute="trailing" constant="8" id="bmV-dD-XM9"/>
+                                                <constraint firstItem="7ax-7n-syB" firstAttribute="top" secondItem="Kzh-Cz-llB" secondAttribute="top" id="eb9-Fo-F8B"/>
+                                                <constraint firstItem="NSS-bO-j3r" firstAttribute="leading" secondItem="7ax-7n-syB" secondAttribute="trailing" constant="8" id="ejK-1c-vYL"/>
+                                                <constraint firstItem="7ax-7n-syB" firstAttribute="leading" secondItem="Kzh-Cz-llB" secondAttribute="leading" constant="15" id="ntv-Xg-k3o"/>
+                                                <constraint firstItem="NSS-bO-j3r" firstAttribute="bottom" secondItem="7ax-7n-syB" secondAttribute="bottom" id="yi8-ha-dbr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgArtWork" destination="7ax-7n-syB" id="c3A-Wf-nWi"/>
+                                            <outlet property="lblAuthor" destination="ZG2-6w-n35" id="fpq-X9-C4b"/>
+                                            <outlet property="lblTitle" destination="NSS-bO-j3r" id="xWh-Ie-gdS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="r1s-KP-4ZT"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="MT0-gY-Wr2"/>
+                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="zi4-sR-AGs"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

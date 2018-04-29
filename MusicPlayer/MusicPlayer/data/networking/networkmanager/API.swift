@@ -7,34 +7,36 @@
 //
 
 import Foundation
+import SwiftyJSON
 import UIKit
 
 
 class API: NSObject {
     
-    class func search(termParam: String, completion: (Bool, MusicSearch?, String) ->Void) {
+    class func search(termParam: String, completion: @escaping (Bool, MusicSearch?, String) ->Void) {
         
         let request = API.request(method: "search?term=" + termParam, http_method: "GET")
-        API.sendRequest(request: request) { (success, object, message) in
+        API.sendRequest(request: request) { (success, json, message) in
             
             if success {
+                let musicSearch = MusicSearch(json: json!)
                 
-                if let items = object as? [NSDictionary] {
-                    
-//                    var users:[UserRanking] = []
-//                    for item in items { users.append(UserRanking(dic:item)) }
-//                    completion(success,users,message)
-                    
+                if (musicSearch.resultCount! > 0) {
+                
+                    print(musicSearch)
+                    completion(success, musicSearch, "search OK!")
+                
                 } else {
                     
                    // completion(false,[],NSLocalizedString("data-error", comment: ""))
+                    completion(false, nil, NSLocalizedString("data-error1", comment:""))
                     
                 }
                 
             } else {
                 
               //  completion(success,[],message)
-                
+                completion(false, nil , NSLocalizedString("data-error2", comment: ""))
             }
             
         }
@@ -56,7 +58,7 @@ class API: NSObject {
         
     }
     
-    private class func sendRequest(request: NSURLRequest, completion: ((Bool,AnyObject?,String) -> Void)?){
+    private class func sendRequest(request: NSURLRequest, completion: ((Bool,JSON?,String) -> Void)?){
         
         NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) {(response, data, error) in
             
@@ -76,8 +78,19 @@ class API: NSObject {
                         if let msg = dict.object(forKey: "data") as? String {
                             text = msg
                         }
+                        do{
+                            let json = try JSON(data: data!)
+                            completion!(true, json, text)
+                        }catch is exception {
+                            print("Invalid JSON.")
+                            completion!(false, nil, "JSON PARSE ERROR")
+                        }
                         
-                      completion!(true, dict.object(forKey: "data") as AnyObject, text)
+                        
+                       
+                        
+                     
+                     
                     
                         
                     } else {

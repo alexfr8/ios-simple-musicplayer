@@ -174,6 +174,45 @@ public final class MusicElement: NSCoding {
     if let value = country { dictionary[SerializationKeys.country] = value }
     return dictionary
   }
+    
+    // MARK: NSCoding Protocol
+    required public init(dict : NSDictionary) {
+        self.kind = dict[SerializationKeys.kind] as? String
+        self.trackId = dict[SerializationKeys.trackId] as? Int
+        self.collectionArtistViewUrl = dict[SerializationKeys.collectionArtistViewUrl] as? String
+        self.discCount = dict[SerializationKeys.discCount] as? Int
+        self.isStreamable = dict[SerializationKeys.isStreamable] as? Bool
+        self.artworkUrl30 = dict[SerializationKeys.artworkUrl30] as? String
+        self.artworkUrl60 = dict[SerializationKeys.artworkUrl60] as? String
+        self.previewUrl = dict[SerializationKeys.previewUrl] as? String
+        self.discNumber = dict[SerializationKeys.discNumber] as? Int
+        self.trackViewUrl = dict[SerializationKeys.trackViewUrl] as? String
+        self.collectionCensoredName = dict[SerializationKeys.collectionCensoredName] as? String
+        self.collectionExplicitness = dict[SerializationKeys.collectionExplicitness] as? String
+        self.artworkUrl100 = dict[SerializationKeys.artworkUrl100] as? String
+        self.collectionArtistName = dict[SerializationKeys.collectionArtistName] as? String
+        self.currency = dict[SerializationKeys.currency] as? String
+        self.wrapperType = dict[SerializationKeys.wrapperType] as? String
+        self.trackNumber = dict[SerializationKeys.trackNumber] as? Int
+        self.collectionViewUrl = dict[SerializationKeys.collectionViewUrl] as? String
+        self.collectionName = dict[SerializationKeys.collectionName] as? String
+        self.collectionArtistId = dict[ SerializationKeys.collectionArtistId] as? Int
+        self.artistName = dict[SerializationKeys.artistName] as? String
+        self.trackCensoredName = dict[SerializationKeys.trackCensoredName] as? String
+        self.collectionPrice = dict[SerializationKeys.collectionPrice] as? Float
+        self.trackCount = dict[SerializationKeys.trackCount] as? Int
+        self.releaseDate = dict[SerializationKeys.releaseDate] as? String
+        self.artistId = dict[SerializationKeys.artistId] as? Int
+        self.primaryGenreName = dict[SerializationKeys.primaryGenreName] as? String
+        self.trackExplicitness = dict[SerializationKeys.trackExplicitness] as? String
+        self.collectionId = dict[SerializationKeys.collectionId] as? Int
+        self.trackName = dict[SerializationKeys.trackName] as? String
+        self.trackPrice = dict[SerializationKeys.trackPrice] as? Float
+        self.artistViewUrl = dict[SerializationKeys.artistViewUrl] as? String
+        self.trackTimeMillis = dict[SerializationKeys.trackTimeMillis] as? Int
+        self.country = dict[SerializationKeys.country] as? String
+    }
+
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {

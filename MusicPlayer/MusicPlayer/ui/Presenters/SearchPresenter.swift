@@ -54,13 +54,14 @@ class SearchPresenter {
     }
     
     func fetchMusic(term: String) {
-        
+        self.mySearchView?.showloading()
         API.search(termParam:term) { (success, musicSearch, message) in
             if (success) {
-                
+                self.mySearchView?.loadTable(value: musicSearch!)
             } else {
-                
+                self.mySearchView?.showError(txt: NSLocalizedString("data-notfound", comment: ""))
             }
+            self.mySearchView?.hideloading()
         }
     }
 }
