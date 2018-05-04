@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 
 protocol SearchView: NSObjectProtocol {
@@ -28,10 +29,16 @@ class SearchViewController: BaseViewController {
     @IBOutlet weak var lblSub2: UILabel!
     @IBOutlet weak var txtSearch: UITextField! { didSet { txtSearch.delegate = self } }
     @IBOutlet weak var tableSearch: UITableView!
+        {
+            didSet {
+                tableSearch.delegate = self
+                tableSearch.dataSource = self
+        }}
     
     var datasource : MusicSearch?
     
     public let searchPresenter = SearchPresenter()
+    @IBOutlet weak var viewActivityIndicator: NVActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +52,6 @@ class SearchViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         searchPresenter.detachView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation
@@ -81,15 +82,19 @@ extension SearchViewController: SearchView {
     }
     
     func setupViews() {
-        
+        tableSearch.isHidden=true;
     }
     
     func showloading() {
-        
+        viewActivityIndicator.startAnimating()
+        viewActivityIndicator.isHidden = false
+       // tableSearch.isHidden = true
     }
     
     func hideloading() {
-        
+        viewActivityIndicator.stopAnimating()
+        viewActivityIndicator.isHidden=true
+        //tableSearch.isHidden = false
     }
     
     func loadTable(value: MusicSearch) {
@@ -138,21 +143,27 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchViewCell
+        let cell = tableSearch.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchViewCell
         
-        
-        let musicItem: MusicElement = datasource!.results![indexPath.row]
-        cell.lblTitle?.text = musicItem.trackName
-        cell.lblAuthor?.text = musicItem.artistName
+        let musicItem: MusicElement     = datasource!.results![indexPath.row]
+     
+        cell.lblTitle?.text             = musicItem.trackName
+        cell.lblAuthor?.text            = musicItem.artistName
         cell.imgArtWork?.imageFromURL(urlString: musicItem.artworkUrl100!)
         
         return cell
+    }
+    
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You tapped cell number \(indexPath.row).")
     }
 }
 
 class SearchViewCell : UITableViewCell {
     
-    @IBOutlet weak var imgArtWork: UIImageView!
+  
+        @IBOutlet weak var imgArtWork: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblAuthor: UILabel!
 }

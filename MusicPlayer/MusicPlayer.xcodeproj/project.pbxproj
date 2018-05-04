@@ -82,6 +82,13 @@
 			path = networkmanager;
 			sourceTree = "<group>";
 		};
+		C15199D3209A1EE500723163 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 		C1606A8620728D9500102A44 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +110,7 @@
 		C1606A9120728D9500102A44 /* MusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				C15199D3209A1EE500723163 /* Vendor */,
 				C1606AA92072922900102A44 /* data */,
 				C1606AA42072918300102A44 /* ui */,
 				C1606A9220728D9500102A44 /* AppDelegate.swift */,
@@ -294,10 +302,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MusicPlayer/Pods-MusicPlayer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

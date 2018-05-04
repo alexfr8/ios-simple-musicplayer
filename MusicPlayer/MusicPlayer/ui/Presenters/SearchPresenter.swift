@@ -50,7 +50,8 @@ class SearchPresenter {
         
       
         mySearchView?.setupText(textProvided: mTexts as NSDictionary)
-        
+        mySearchView?.setupViews()
+        mySearchView?.setupImages(images: [:])
     }
     
     func fetchMusic(term: String) {
