@@ -88,13 +88,13 @@ extension SearchViewController: SearchView {
     func showloading() {
         viewActivityIndicator.startAnimating()
         viewActivityIndicator.isHidden = false
-       // tableSearch.isHidden = true
+        tableSearch.isHidden = true
     }
     
     func hideloading() {
         viewActivityIndicator.stopAnimating()
         viewActivityIndicator.isHidden=true
-        //tableSearch.isHidden = false
+        tableSearch.isHidden = false
     }
     
     func loadTable(value: MusicSearch) {
