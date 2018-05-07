@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
-
+import SwiftSpinner
 
 protocol SearchView: NSObjectProtocol {
     func setupText(textProvided: NSDictionary)
@@ -21,28 +20,26 @@ protocol SearchView: NSObjectProtocol {
     func showError(txt: String)
 }
 
-class SearchViewController: BaseViewController {
+class SearchViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
     
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSub1: UILabel!
     @IBOutlet weak var lblSub2: UILabel!
     @IBOutlet weak var txtSearch: UITextField! { didSet { txtSearch.delegate = self } }
-    @IBOutlet weak var tableSearch: UITableView!
-        {
-            didSet {
-                tableSearch.delegate = self
-                tableSearch.dataSource = self
-        }}
-    
+
+   
+    @IBOutlet weak var tableViewSearch: UITableView!
+    weak var animationTypeLabel:UILabel!
     var datasource : MusicSearch?
     
     public let searchPresenter = SearchPresenter()
-    @IBOutlet weak var viewActivityIndicator: NVActivityIndicatorView!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableSearch.register(SearchViewCell.self, forCellReuseIdentifier: "cell")
+       
         searchPresenter.attachView(view:self)
         // Do any additional setup after loading the view.
         searchPresenter.setupUI()
@@ -53,19 +50,63 @@ class SearchViewController: BaseViewController {
         searchPresenter.detachView()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+//        if let editorVC = segue.destinationViewController as? NoteEditorViewController {
+//            
+//            if "CellSelected" == segue.identifier {
+//                if let path = tableView.indexPathForSelectedRow() {
+//                    editorVC.note = notes[path.row]
+//                }
+//            } else if "AddNewNote" == segue.identifier {
+//                let note = Note(text: " ")
+//                editorVC.note = note
+//                notes.append(note)
+//            }
+//        }
     }
-    */
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (datasource != nil) {
+            return (datasource?.resultCount)!
+        } else {
+            return 0
+        }
+        
+
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewSearch.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        let musicItem: MusicElement     = datasource!.results![indexPath.row]
+        
+       // cell.lblTitle?.text             = musicItem.trackName
+       // cell.lblAuthor?.text            = musicItem.artistName
+       // cell.imgArtWork?.imageFromURL(urlString: musicItem.artworkUrl100!)
+        cell.textLabel?.text = musicItem.trackName
+        return cell
+    }
 
 }
 
 extension SearchViewController: SearchView {
+    
+    func showloading() {
+        
+        SwiftSpinner.show("TRY", animated: true)
+    }
+    
+    func hideloading() {
+        SwiftSpinner.hide()
+    }
+    
     func showError(txt: String) {
         
     }
@@ -82,25 +123,15 @@ extension SearchViewController: SearchView {
     }
     
     func setupViews() {
-        tableSearch.isHidden=true;
+      
     }
     
-    func showloading() {
-        viewActivityIndicator.startAnimating()
-        viewActivityIndicator.isHidden = false
-        tableSearch.isHidden = true
-    }
-    
-    func hideloading() {
-        viewActivityIndicator.stopAnimating()
-        viewActivityIndicator.isHidden=true
-        tableSearch.isHidden = false
-    }
+   
     
     func loadTable(value: MusicSearch) {
         
         datasource = value
-        tableSearch.reloadData()
+      tableViewSearch.reloadData()
         
     }
     
@@ -131,39 +162,4 @@ extension SearchViewController: UITextFieldDelegate{
     }
 }
 
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if (datasource != nil) {
-            return (datasource?.resultCount)!
-        } else {
-            return 0
-        }
-    
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableSearch.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchViewCell
-        
-        let musicItem: MusicElement     = datasource!.results![indexPath.row]
-     
-        cell.lblTitle?.text             = musicItem.trackName
-        cell.lblAuthor?.text            = musicItem.artistName
-        cell.imgArtWork?.imageFromURL(urlString: musicItem.artworkUrl100!)
-        
-        return cell
-    }
-    
-    // method to run when table view cell is tapped
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
-    }
-}
 
-class SearchViewCell : UITableViewCell {
-    
-  
-        @IBOutlet weak var imgArtWork: UIImageView!
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblAuthor: UILabel!
-}

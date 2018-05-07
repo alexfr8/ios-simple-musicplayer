@@ -7,5 +7,5 @@ target 'MusicPlayer' do
 
   # Pods for MusicPlayer
     pod 'SwiftyJSON', '~> 4.0'
-    pod 'NVActivityIndicatorView'
+    pod "SwiftSpinner"
 end
