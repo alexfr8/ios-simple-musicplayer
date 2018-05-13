@@ -19,6 +19,8 @@ public struct SearchPresenterConstant {
     static let txtFindHolder: String            =       "TXTFINDHOLDER"
 }
 
+
+
 class SearchPresenter {
     
     
@@ -36,6 +38,7 @@ class SearchPresenter {
     func detachView(){
         mySearchView = nil
     }
+    
     func setupUI() {
         
         //RETRIEVE TEXTS FROM THE LOCALIZABLE.STRINGS.
@@ -54,6 +57,7 @@ class SearchPresenter {
         mySearchView?.setupImages(images: [:])
     }
     
+   
     func fetchMusic(term: String) {
         self.mySearchView?.showloading()
         API.search(termParam:term) { (success, musicSearch, message) in
@@ -65,4 +69,16 @@ class SearchPresenter {
             self.mySearchView?.hideloading()
         }
     }
+    
+    func navigateDetailSetup(vc: DetailViewController, index: IndexPath, music: MusicSearch ) {
+        if (vc != nil) {
+            vc.datasource = music
+            vc.musicItemIndex = index.row
+            self.mySearchView?.goToDetail(vc: vc)
+        } else {
+            self.mySearchView?.showError(txt: NSLocalizedString("data-errornavigating", comment: ""))
+        }
+    }
 }
+
+

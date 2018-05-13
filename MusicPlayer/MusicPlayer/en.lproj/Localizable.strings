@@ -20,3 +20,4 @@
 
 "data-error1"                =   "Error downloading data.";
 "data-notfound"              =   "Error data not found";
+"data-errornavigating"      =    "Error happen loading detail screen";

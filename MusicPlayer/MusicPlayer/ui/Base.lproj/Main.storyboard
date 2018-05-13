@@ -120,17 +120,16 @@
                         <outlet property="lblTitle" destination="lun-Ni-xU5" id="vGd-gG-gSx"/>
                         <outlet property="tableViewSearch" destination="RdS-f2-lEO" id="T2w-Jh-9sP"/>
                         <outlet property="txtSearch" destination="mH7-51-EWo" id="mLB-aA-U3L"/>
-                        <segue destination="x5h-H1-vaL" kind="custom" id="Du4-Gn-vRr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="476" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="C4e-fp-lxl">
             <objects>
-                <viewController id="x5h-H1-vaL" sceneMemberID="viewController">
+                <viewController id="x5h-H1-vaL" customClass="DetailViewController" customModule="MusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aNG-EH-sbK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,14 +147,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="MJh-5v-jBp" userLabel="imgCover">
-                                <rect key="frame" x="112.5" y="152" width="150" height="150"/>
+                                <rect key="frame" x="112" y="152" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="GfZ-GB-tR0"/>
                                     <constraint firstAttribute="width" secondItem="MJh-5v-jBp" secondAttribute="height" multiplier="1:1" id="mBR-Dx-8vS"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-yl-eve" userLabel="btnShare">
-                                <rect key="frame" x="165.5" y="430" width="45" height="45"/>
+                                <rect key="frame" x="166" y="430" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f2P-yl-eve" secondAttribute="height" multiplier="1:1" id="Bnk-eS-t12"/>
                                 </constraints>
@@ -188,7 +187,6 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="BeB-Qi-5FJ" firstAttribute="height" secondItem="MIc-gn-UyH" secondAttribute="height" id="6IS-pT-IdN"/>
-                                    <constraint firstItem="BeB-Qi-5FJ" firstAttribute="width" secondItem="MIc-gn-UyH" secondAttribute="width" id="Czi-Wc-quu"/>
                                     <constraint firstItem="Y0k-u9-v1o" firstAttribute="height" secondItem="BeB-Qi-5FJ" secondAttribute="height" id="MpN-O9-NgT"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="YVj-I7-wA8"/>
                                     <constraint firstItem="MIc-gn-UyH" firstAttribute="width" secondItem="1YW-We-0iB" secondAttribute="width" id="gpy-ac-Mvt"/>
@@ -231,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBc-WM-9w5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537" y="133"/>
+            <point key="canvasLocation" x="1364" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VZk-Yi-gv7">

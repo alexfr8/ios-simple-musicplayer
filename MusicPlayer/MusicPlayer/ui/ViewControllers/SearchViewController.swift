@@ -18,6 +18,8 @@ protocol SearchView: NSObjectProtocol {
     func hideloading()
     func loadTable(value: MusicSearch)
     func showError(txt: String)
+    
+    func goToDetail(vc: DetailViewController)
 }
 
 class SearchViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
@@ -93,10 +95,20 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         cell.textLabel?.text = musicItem.trackName
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let vc = DetailViewController()
+        searchPresenter.navigateDetailSetup(vc: vc, index: indexPath, music: datasource!)
+    }
 
 }
 
 extension SearchViewController: SearchView {
+    func goToDetail(vc: DetailViewController) {
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func showloading() {
         

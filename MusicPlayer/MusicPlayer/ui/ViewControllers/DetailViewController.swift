@@ -8,7 +8,20 @@
 
 import UIKit
 
+
+protocol DetailView: NSObjectProtocol {
+    func setupText(textProvided: NSDictionary)
+    func setupImages(images: NSDictionary)
+    func setupViews()
+    
+    func showloading()
+    func hideloading()
+    func showError(txt: String)
+}
 class DetailViewController: BaseViewController {
+    
+    public var musicItemIndex: Int = -1
+    public var datasource : MusicSearch?
 
     override func viewDidLoad() {
         super.viewDidLoad()
