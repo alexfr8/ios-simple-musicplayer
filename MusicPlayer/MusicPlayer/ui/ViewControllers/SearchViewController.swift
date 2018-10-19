@@ -98,7 +98,9 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        let vc = DetailViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+
         searchPresenter.navigateDetailSetup(vc: vc, index: indexPath, music: datasource!)
     }
 

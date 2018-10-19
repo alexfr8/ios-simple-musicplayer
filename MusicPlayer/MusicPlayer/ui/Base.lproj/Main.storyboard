@@ -129,7 +129,7 @@
         <!--Detail View Controller-->
         <scene sceneID="C4e-fp-lxl">
             <objects>
-                <viewController id="x5h-H1-vaL" customClass="DetailViewController" customModule="MusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DetailViewController" storyboardIdentifier="DetailViewController" id="x5h-H1-vaL" customClass="DetailViewController" customModule="MusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aNG-EH-sbK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,14 +147,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="MJh-5v-jBp" userLabel="imgCover">
-                                <rect key="frame" x="112" y="152" width="150" height="150"/>
+                                <rect key="frame" x="112.5" y="152" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="GfZ-GB-tR0"/>
                                     <constraint firstAttribute="width" secondItem="MJh-5v-jBp" secondAttribute="height" multiplier="1:1" id="mBR-Dx-8vS"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-yl-eve" userLabel="btnShare">
-                                <rect key="frame" x="166" y="430" width="45" height="45"/>
+                                <rect key="frame" x="165.5" y="430" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f2P-yl-eve" secondAttribute="height" multiplier="1:1" id="Bnk-eS-t12"/>
                                 </constraints>
