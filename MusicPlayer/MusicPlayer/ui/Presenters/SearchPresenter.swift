@@ -71,13 +71,11 @@ class SearchPresenter {
     }
     
     func navigateDetailSetup(vc: DetailViewController, index: IndexPath, music: MusicSearch ) {
-        if (vc != nil) {
+        
             vc.datasource = music
             vc.musicItemIndex = index.row
             self.mySearchView?.goToDetail(vc: vc)
-        } else {
-            self.mySearchView?.showError(txt: NSLocalizedString("data-errornavigating", comment: ""))
-        }
+        
     }
 }
 

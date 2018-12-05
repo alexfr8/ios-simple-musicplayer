@@ -10,30 +10,42 @@ import Foundation
 // MARK: Constant section
 public struct DetailPresenterConstant {
     
-    
     static let navBarTitle : String             =       "NAVBARTITLE"
     static let lblTitle : String                =       "LBLTITLE"
     static let lblSubtitle1 : String            =       "LBLSUBITLE1"
     static let lblSubtitle2 : String            =       "LBLSUBITLE2"
+    static let imgUrl   : String                =       "IMGURLDETAIL"
+    
 }
 
 class DetailPresenter {
     
     
-    weak private var mySearchView: SearchView?
+    weak private var myDetailView: DetailView?
     
     init() {
         
     }
     
-    func attachView(view: SearchView){
-        mySearchView = view
+    func attachView(view: DetailView){
+        myDetailView = view
     }
     
     func detachView(){
-        mySearchView = nil
+        myDetailView = nil
     }
-    func setupUI() {
+    func setupUI(musicIndex: Int, datasource: MusicSearch) {
         
+        let item:MusicElement = datasource.getResultList()[musicIndex]
+        
+        //RETRIEVE TEXTS FROM THE LOCALIZABLE.STRINGS.
+        let  mTexts:NSMutableDictionary = [
+            DetailPresenterConstant.navBarTitle : item.artistName ?? ""
+            ,   DetailPresenterConstant.lblTitle : item.collectionName ?? ""
+            
+        ]
+        myDetailView?.setupText(textProvided: mTexts as NSDictionary)
+        myDetailView?.setupViews()
+        myDetailView?.setupImages(images: [DetailPresenterConstant.imgUrl: item.artworkUrl100 ?? ""])
     }
 }

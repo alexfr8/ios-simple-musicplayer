@@ -19,14 +19,31 @@ protocol DetailView: NSObjectProtocol {
     func showError(txt: String)
 }
 class DetailViewController: BaseViewController {
+    @IBOutlet weak var lblArtis: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var imgCover: UIImageView!
+    @IBOutlet weak var btnShare: UIButton!
+    @IBOutlet weak var btnPause: UIButton!
+    
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnPrev: UIButton!
+    @IBOutlet weak var btnNext: UIButton!
+    
+    @IBOutlet weak var lblDisc: UILabel!
     
     public var musicItemIndex: Int = -1
     public var datasource : MusicSearch?
 
+    
+     public let detailPresenter = DetailPresenter()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        detailPresenter.attachView(view:self as DetailView)
+       
+        detailPresenter.setupUI(musicIndex: musicItemIndex, datasource: datasource!)
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +52,25 @@ class DetailViewController: BaseViewController {
     }
     
 
+    
+    @IBAction func btnShare(_ sender: Any) {
+    }
+    
+    
+    @IBAction func btnPrev(_ sender: Any) {
+    }
+   
+    
+    @IBAction func btnPause(_ sender: Any) {
+    }
+    
+    @IBAction func btnPlay(_ sender: Any) {
+    }
+    
+    @IBAction func btnNext(_ sender: Any) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -44,5 +80,30 @@ class DetailViewController: BaseViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+extension DetailViewController : DetailView {
+    func setupText(textProvided: NSDictionary) {
+        
+    }
+    
+    func setupImages(images: NSDictionary) {
+        
+    }
+    
+    func setupViews() {
+        
+    }
+    
+    func showloading() {
+        
+    }
+    
+    func hideloading() {
+        
+    }
+    
+    func showError(txt: String) {
+        
+    }
 }

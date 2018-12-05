@@ -57,5 +57,10 @@ public final class MusicSearch: NSCoding {
     aCoder.encode(results, forKey: SerializationKeys.results)
     aCoder.encode(resultCount, forKey: SerializationKeys.resultCount)
   }
+    
+    
+    public func getResultList () -> [MusicElement] {
+        return self.results!
+    }
 
 }
